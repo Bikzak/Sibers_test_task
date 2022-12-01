@@ -1,0 +1,60 @@
+﻿@model Sibers_test_task.ViewModels.ProjectViewModel
+@{
+    ViewBag.Title = "ShowProjects";
+}
+
+<h2> </h2>
+
+<p>
+
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ProjectName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Executor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Customer)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Deadline)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreationDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Priority)
+        </th>
+        <th></th>
+    </tr>
+
+    @for (var item = 0; item < Model.Projects.Count; item++)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => Model.Projects[item].ProjectName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model.Projects[item].Executor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model.Projects[item].Customer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model.Projects[item].Deadline)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model.Projects[item].CreationDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model.Projects[item].Priority)
+            </td>
+
+        </tr>
+    }
+    @Html.ActionLink("Back", "Index", "Workers")
+
+</table>

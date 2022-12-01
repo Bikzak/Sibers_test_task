@@ -1,0 +1,88 @@
+﻿@model IEnumerable<Sibers_test_task.ViewModels.ProjectViewModel>
+
+<body>
+    <h2>List of Projects</h2>
+
+    <p>
+        @Html.ActionLink("Create new Project", "Create")
+    </p>
+
+    <div class="panel panel-default">
+        <div class="panel-heading panel-title">@ViewBag.Title</div>
+        <hr />
+
+        <div class="panel-body">
+            <table class="table table-responsive table-responsive" id="myTable">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ProjectName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Executor)
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.Customer)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Deadline)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CreationDate)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Priority)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ProjectName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Executor)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Customer)
+                            </td>
+                            <td>
+                                @Html.DisplayTextFor(modelItem => item.Deadline)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CreationDate)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Priority)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.ProjectID })|
+                                @Html.ActionLink("Details", "Details", new { id = item.ProjectID })|
+                                @Html.ActionLink("Delete", "Delete", new { id = item.ProjectID })|
+                                @Html.ActionLink("Add workers", "AddToProject", new { ProjectID = item.ProjectID })|
+                                @Html.ActionLink("Remove workers", "DeleteFromProject", "Projects", new { ProjectID = item.ProjectID }, "")|
+                                @Html.ActionLink("Show Workers", "ShowWorkersInProject", "Projects", new { ProjectID = item.ProjectID }, "")|
+                                @Html.ActionLink("Show Tasks", "ShowProjectsMissions", "Projects", new { ProjectID = item.ProjectID }, "")|
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+
+</body>
+@section scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#myTable').DataTable();
+        });
+    </script>
+}

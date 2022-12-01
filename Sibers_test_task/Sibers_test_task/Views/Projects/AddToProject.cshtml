@@ -1,0 +1,56 @@
+﻿@model Sibers_test_task.ViewModels.WorkerViewModel
+
+@{
+    ViewBag.Title = "AddToProject";
+}
+
+<h2>Add to Project</h2>
+
+
+@using (Html.BeginForm())
+{
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PatronymicName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.isChecked)
+            </th>
+        </tr>
+
+        @for (var item = 0; item < Model.Workers.Count; item++)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => Model.Workers[item].FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Model.Workers[item].LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Model.Workers[item].PatronymicName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Model.Workers[item].Email)
+                </td>
+                <td>
+                    @Html.CheckBoxFor(modelItem => Model.Workers[item].isChecked)
+                </td>
+                @Html.HiddenFor(modelItem => Model.Workers[item].WorkerID)
+            </tr>
+
+        }
+
+    </table>
+    <input type="submit" value="Save" class="btn btn-default" />
+}

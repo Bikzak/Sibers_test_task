@@ -1,0 +1,53 @@
+﻿@model Sibers_test_task.ViewModels.TaskViewModel
+@{
+    ViewBag.Title = "Task";
+}
+
+<h2>Team of executors</h2>
+<p>
+    @Html.ActionLink("Create new Task", "CreateTask")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WorkerName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TasksStatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Comment)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Priority)
+        </th>
+        <th></th>
+    </tr>
+
+    @for (var item = 0; item < Model.Tasks.Count; item++)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => Model.Tasks[item].Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model.Tasks[item].WorkerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model.Tasks[item].TasksStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model.Tasks[item].Comment)
+            </td>
+            <td>
+                @Html.DisplayNameFor(modelItem => Model.Tasks[item].Priority)
+            </td>
+            @Html.HiddenFor(modelItem => Model.Tasks[item].WorkerID)
+        </tr>
+    }
+
+
+</table>
